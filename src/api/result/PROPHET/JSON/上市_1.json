@@ -1,0 +1,26 @@
+{
+    "2021-08-16": [
+        {
+            "stock_code": "3037",
+            "date": "2021-08-13",
+            "price": 135.0,
+            "predicted_date": "2021-08-16",
+            "predicted_price": 118.75,
+            "confidence_max": 126.99,
+            "confidence_min": 111.12,
+            "fluctuation_percent": -0.12037,
+            "created_at": "2021-08-13 17:46:58"
+        },
+        {
+            "stock_code": "2888",
+            "date": "2021-08-13",
+            "price": 9.13,
+            "predicted_date": "2021-08-16",
+            "predicted_price": 8.95,
+            "confidence_max": 9.61,
+            "confidence_min": 8.28,
+            "fluctuation_percent": -0.01972,
+            "created_at": "2021-08-13 17:47:52"
+        }
+    ]
+}

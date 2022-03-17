@@ -1,0 +1,7 @@
+requests
+Flask-SQLAlchemy
+Flask
+pymysql
+python-dateutil
+psutil
+pysocks

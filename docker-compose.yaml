@@ -1,0 +1,136 @@
+version: '3.3'
+# docker-compose --compatibility up
+services:
+  stock_crawler:
+    container_name: stock_crawler
+    deploy:
+       resources:
+            limits:
+                cpus: '1.000'
+                memory: 400M
+    volumes:
+        - ./src/crawler/:/app/
+    build: ./image/stock_crawler/
+    image: douerchiang/stock_crawler:1.0
+    restart: always
+    links:
+      - 'stock_mysql:database'
+      # - 'stock_elasticsearch:elasticsearch'
+      - 'stock_api:api'
+    env_file:
+      - ./container/env_files/db.env
+      - ./container/env_files/all.env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"  
+    networks:
+      - mysql
+      # - elasticsearch
+      - api
+
+  stock_api:
+    container_name: stock_api
+    deploy:
+      resources:
+        limits:
+          cpus: '2.000'
+          memory: 3G
+    restart: always
+    links:
+      - 'stock_mysql:database'
+      # - 'stock_elasticsearch:elasticsearch'
+    env_file:
+      - ./container/env_files/db.env
+      - ./container/env_files/all.env
+    build: ./image/stock_api/
+    image: douerchiang/stock_api:1.0
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+    ports:
+      - 12345:80
+    volumes:
+      - ./src/api/:/app
+    # 檢查健康狀態的container只會檢查具備autoheal且值為true的container
+    labels:
+      autoheal: "true"
+    networks:
+      - mysql
+      # - elasticsearch
+      - api
+      # 這邊的檢康檢查，需要輔以下面的bot_autohealcheck
+    healthcheck:
+        test: curl -Ss --fail 'http://localhost/' || exit 1
+        interval: 300s
+        timeout: 5s
+        # 意思是只要第三次curl的exit code為1，就會kill container
+        retries: 3
+
+  stock_mysql:
+    container_name: stock_mysql
+    deploy:
+      resources:
+           limits:
+               cpus: '1.000'
+               memory: 1G
+    image: mariadb:10.6.2
+    command: --max-allowed-packet=64MB
+    restart: always
+    volumes:
+      - ./container/volumes/stock_mysql_vol/:/var/lib/mysql
+    env_file:
+      - ./container/env_files/db.env
+      - ./container/env_files/all.env  
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+    ports:
+      - 33306:3306
+    networks:
+      - mysql
+  
+  # stock_elasticsearch:
+  #     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+  #     container_name: stock_elasticsearch
+  #     deploy:
+  #         resources:
+  #             limits:
+  #                 cpus: '1.000'
+  #                 memory: 2G
+  #     restart: always
+  #     logging:
+  #           driver: "json-file"
+  #           options:
+  #               max-size: "1g"
+  #     env_file:
+  #       - ./container/env_files/es.env
+  #       - ./container/env_files/all.env
+  #     logging:
+  #       driver: "json-file"
+  #       options:
+  #         max-size: "1g"
+  #     ulimits:
+  #         memlock:
+  #             soft: -1
+  #             hard: -1
+  #         nofile:
+  #             soft: 65536
+  #             hard: 65536
+  #     volumes:
+  #         - ./container/volumes/es_data/:/usr/share/elasticsearch/data
+  #     ports:
+  #         - 9200:9200
+  #     networks:
+  #       - elasticsearch
+
+networks:
+  mysql:
+    driver: bridge
+  # elasticsearch:
+  #   driver: bridge
+  api:
+    driver: bridge
+  

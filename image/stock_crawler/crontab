@@ -1,0 +1,13 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MYSQL_ROOT_PASSWORD=Air318Drill!?
+MYSQL_PASSWORD=Air318Drill!?
+MYSQL_DATABASES=Stock
+MYSQL_USER=stocker
+
+# m h dom mon dow command
+0   *   *   *   *  cd /app/ && python scheduler/download_opendata.py > /tmp/download_opendata.json
+0   *   *   *   *  cd /app/ && python scheduler/download_stock_history.py > /tmp/download_stock_history.json
+0   *   *   *   *  cd /app/ && python scheduler/download_stock_buy_sell.py > /tmp/download_stock_buy_sell.json
+#0   15   *   *   *  cd /app/ && python scheduler/predict_prophet.py > /tmp/predict_prophet.json
+
