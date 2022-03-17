@@ -1,0 +1,4 @@
+container/volumes/es_data/*
+container/volumes/stock_mysql_vol/*
+
+*.pyc
