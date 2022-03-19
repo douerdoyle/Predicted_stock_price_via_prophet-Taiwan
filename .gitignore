@@ -1,5 +1,6 @@
-
-container/volumes/es_data/
-container/volumes/stock_mysql_vol/
+supervisord.pid
 .DS_Store
 *.pyc
+container/volumes/es_data/
+container/volumes/stock_mysql_vol/
+src/crawler/opendata/*

@@ -6,7 +6,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from pytrends.request import TrendReq
-from prophet.serialize import model_to_json, model_from_json
 # matplotlib pyplot for plotting
 import matplotlib
 import matplotlib.pyplot as plt

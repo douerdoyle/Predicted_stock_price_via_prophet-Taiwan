@@ -11,7 +11,7 @@ services:
     volumes:
         - ./src/crawler/:/app/
     build: ./image/stock_crawler/
-    image: douerchiang/stock_crawler:1.0
+    image: stock_crawler:1.0
     restart: always
     links:
       - 'stock_mysql:database'
@@ -44,7 +44,7 @@ services:
       - ./container/env_files/db.env
       - ./container/env_files/all.env
     build: ./image/stock_api/
-    image: douerchiang/stock_api:1.0
+    image: stock_api:1.0
     logging:
       driver: "json-file"
       options:

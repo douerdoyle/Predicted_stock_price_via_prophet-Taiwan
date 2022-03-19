@@ -1,11 +1,10 @@
 import os, json, traceback, threading, sys, time, math, gc
 sys.path.append('/app/')
 from shutil import move
-from copy import deepcopy
 from lib.stocker_prophet import Stocker
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
-from sqlalchemy import desc, func
+from sqlalchemy import desc
 from lib.db_var import db
 from lib.load_data import load_stock2dataframe
 from lib.var import result_folder_dir

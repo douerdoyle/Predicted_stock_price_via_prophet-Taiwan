@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-MYSQL_ROOT_PASSWORD=Air318Drill!?
-MYSQL_PASSWORD=Air318Drill!?
+MYSQL_ROOT_PASSWORD=[Your password]
+MYSQL_PASSWORD=[Your password]
 MYSQL_DATABASES=Stock
 MYSQL_USER=stocker
 
