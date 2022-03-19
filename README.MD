@@ -1,4 +1,9 @@
 # Stock App
+## Reference
+- [https://towardsdatascience.com/stock-prediction-in-python-b66555171a2]()
+- [https://github.com/WillKoehrsen/Data-Analysis/tree/master/stocker]()
+- [https://github.com/syuraj/stocks-prediction-engine#readme](https://towardsdatascience.com/stock-prediction-in-python-b66555171a2)
+
 ## Introduction
 Crawl all listed companies history price and use "prophet" to predict future price
 
@@ -84,7 +89,7 @@ curl -XPOST http://127.0.0.1:12345/predict/prophet \
 	    "stock_code": "3037", 
 	    "days": 3,
 	    "training_years": 1,
-	    "training_months": 6
+	    "training_months": 0
 	}'
 ```
 

@@ -438,7 +438,7 @@ class Stocker:
         train = self.stock[
             (
                 self.stock["Date"]
-                > (max(self.stock["Date"]) - pd.DateOffset(years=self.training_years))
+                > (max(self.stock["Date"]) - pd.DateOffset(years=self.training_years, months=self.training_months))
             )
         ]
 
@@ -612,7 +612,7 @@ class Stocker:
             (self.stock["Date"] < start_date)
             & (
                 self.stock["Date"]
-                > (start_date - pd.DateOffset(years=self.training_years))
+                > (start_date - pd.DateOffset(years=self.training_years, months=self.training_months))
             )
         ]
 
@@ -932,7 +932,7 @@ class Stocker:
         # Use past self.training_years years of data
         train = self.stock[
             self.stock["Date"]
-            > (self.max_date - pd.DateOffset(years=self.training_years))
+            > (self.max_date - pd.DateOffset(years=self.training_years, months=self.training_months))
         ]
         model.fit(train)
 
@@ -1094,7 +1094,7 @@ class Stocker:
         # Use past self.training_years years for training
         train = self.stock[
             self.stock["Date"]
-            > (max(self.stock["Date"]) - pd.DateOffset(years=self.training_years))
+            > (max(self.stock["Date"]) - pd.DateOffset(years=self.training_years, months=self.training_months))
         ]
 
         model = self.create_model()
@@ -1211,7 +1211,7 @@ class Stocker:
         train = self.stock[
             (
                 self.stock["Date"]
-                > (start_date - pd.DateOffset(years=self.training_years))
+                > (start_date - pd.DateOffset(years=self.training_years, months=self.training_months))
             )
             & (self.stock["Date"] < start_date)
         ]
