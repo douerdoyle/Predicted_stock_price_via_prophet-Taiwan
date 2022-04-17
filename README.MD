@@ -180,7 +180,7 @@ status: Boolean, the API execution status <br>
 
 ```
 URL:
-	http://127.0.0.1:12345/predict_result/?purpose=CHECK_PICTURE&stock=3037
+	http://127.0.0.1:12345/predict_result/?purpose=DOWNLOAD_PICTURE&stock=3037
 Method:
 	GET
 ```
