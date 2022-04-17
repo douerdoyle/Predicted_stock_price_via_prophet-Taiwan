@@ -1,8 +1,8 @@
 # Stock App
 ## Reference
-- [https://towardsdatascience.com/stock-prediction-in-python-b66555171a2]()
-- [https://github.com/WillKoehrsen/Data-Analysis/tree/master/stocker]()
-- [https://github.com/syuraj/stocks-prediction-engine#readme](https://towardsdatascience.com/stock-prediction-in-python-b66555171a2)
+- [https://towardsdatascience.com/stock-prediction-in-python-b66555171a2](https://towardsdatascience.com/stock-prediction-in-python-b66555171a2)
+- [https://github.com/WillKoehrsen/Data-Analysis](https://github.com/WillKoehrsen/Data-Analysis)
+- [https://github.com/syuraj/stocks-prediction-engine#readme](https://github.com/syuraj/stocks-prediction-engine#readme)
 
 ## Introduction
 Crawl all listed companies history price and use "prophet" to predict future price
